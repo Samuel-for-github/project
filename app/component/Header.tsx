@@ -11,7 +11,7 @@ import {
 
 export default function Header() {
 
-  const [route, setRoute] = useState("")
+  const [route, setRoute] = useState("Home")
   const [toggle, setToggle] = useState(false)
   
   const handleMenu = ()=>{

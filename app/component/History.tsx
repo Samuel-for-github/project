@@ -2,31 +2,29 @@
 
 import React, { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-export default function Cooking() {
+export default function History() {
   const [input, setInput] = useState("");
   const [errors, setErrors] = useState('')
-  const [recipies, setRecipies] = useState([]);
+  const [events, setEvents] = useState([]);
   const fetchData = useDebouncedCallback(async () => {
     try {
       const res = await fetch(
-        `https://api.api-ninjas.com/v1/recipe?query=${input}`,
+        `https://api.api-ninjas.com/v1/historicalevents?text=${input}`,
         {
           headers: {
             "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY as string,
           },
         }
       );
-
       const data = await res.json();
-        if (data.length>0) {
-          setRecipies(data);
-          setErrors('')
-        }
-        else{
-          setRecipies((prev)=>[])
-          setErrors("No dish available")
-          
-        }
+      if (data.length>0) {
+        setEvents(data)  
+        setErrors('')
+      }
+      else{
+        setEvents(prev=>[])  
+        setErrors('This Historial Event is not available')
+      }
     } catch (error) {
       console.log(error);
     }
@@ -39,11 +37,11 @@ export default function Cooking() {
 
   return (
     <div className="primaryClass">
-      <form className="flex gap-2 mb-4" onSubmit={handleSubmit}>
+      <form className="flex gap-2 mb-4 justify-center" onSubmit={handleSubmit}>
         <input
           onChange={(e) => setInput(e.target.value)}
           type="text"
-          placeholder="Enter a dish"
+          placeholder="Enter a historical event or place"
           className="border rounded px-2 border-slate-700"
         />
         <input
@@ -52,22 +50,17 @@ export default function Cooking() {
           value={"search"}
         />
       </form>
-      <div>
-        {recipies &&
-          recipies.map((dish: any) => (
-            <div key={dish.title}>
-              <h1 className="font-bold my-3">{dish.title}</h1>
-              <p className="text-lg text-red-500 mb-3">
-                Ingredients: {dish.ingredients}
-              </p>
-              <p className="mb-3">{dish.servings}</p>
-              <p className="text-left mb-3">{dish.instructions}</p>
+      <div className="mx-5">
+        {events && events.map((event: any) => (
+            <div key={event.event}>
+              <h1 className="font-bold my-3">{event.event}</h1>
+              <p>{event.day}-{event.month}-{event.year}</p>
+             
               <div className="block h-1 rounded-md border border-black border-b-2"></div>
             </div>
           ))
         }
         {errors}
-
       </div>
     </div>
   );

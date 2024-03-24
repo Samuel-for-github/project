@@ -1,5 +1,5 @@
 import React from 'react'
-import Nutrion from '../components/Nutrion'
+import Nutrion from '../component/Nutrion'
 
 export default function page() {
   return (

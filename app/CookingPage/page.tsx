@@ -1,5 +1,5 @@
 import React from 'react'
-import Cooking from '../components/Cooking'
+import Cooking from '../component/Cooking'
 
 export default function page() {
   return (

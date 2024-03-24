@@ -1,5 +1,5 @@
 import React from 'react'
-import History from '../components/History'
+import History from '../component/History'
 
 export default function page() {
   return (

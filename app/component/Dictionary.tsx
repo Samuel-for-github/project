@@ -24,6 +24,9 @@ export default function Dictionary() {
         if (audioSrc) {
           setAudio(audioSrc)
         }
+        else{
+          setAudio(prev=>"")
+        }
         setError('')
       }
       

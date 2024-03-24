@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className="flex w-full md:justify-center gap-4 my-4 justify-around">
+      <nav className="flex w-full justify-between gap-2 my-4 px-6">
         <div className="md:hidden" >
           <div onClick={handleMenu} className="w-[28px] h-[28px] object-contain">
           {toggle? <HiX/> : <HiMenu/>}

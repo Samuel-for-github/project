@@ -18,8 +18,9 @@ export default function Weather() {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   const [place, setPlace] = useState("")
-  const [temp, setTemp] = useState("")
-  const [sky, setSky] = useState("")
+  const [temp, setTemp] = useState("");
+  const [sky, setSky] = useState("");
+  const [country, setCountry] = useState("")
   const fetchData = useDebouncedCallback(async () => {
     try {
       const res = await fetch(
@@ -28,12 +29,13 @@ export default function Weather() {
       
       
       const name = data["location"]["name"];
-
+      const country = data["location"]["country"];
       const conditionText = data["current"]["condition"]["text"]
    
       const temperatureCelcius = data["current"]["temp_c"];
       if (data) {
         setPlace(name)
+        setCountry(country)
         setTemp(temperatureCelcius)
         setSky(conditionText)
        
@@ -43,6 +45,7 @@ export default function Weather() {
      setPlace("")
      setTemp("")
      setSky("")
+     setCountry("")
       setError("The word you searched not available")
       console.log(error);
     
@@ -74,7 +77,7 @@ export default function Weather() {
         {error}
 {place?         <Card>
   <CardHeader>
-    <CardTitle>{place}</CardTitle>
+    <CardTitle>{place? `Region: ${place}, ${country}`:""}</CardTitle>
   </CardHeader>
   <CardContent>
     <h2 className="text-xl">{temp? `${temp} °C`: ""}</h2>

@@ -33,7 +33,7 @@ export default function Header() {
                 <Link href={"NutritionPage"} onClick={()=>setRoute("Nutrition")}>Nutrition</Link>
                 <Link href={"HistoryPage"} onClick={()=>setRoute("History")}>History</Link>
                 <Link href={"TourismPage"} onClick={()=>setRoute("Tourism")}>Tourism</Link>
-                <Link href={"WeatherPage"} onClick={()=>setRoute("Tourism")}>Weather</Link>
+                <Link href={"WeatherPage"} onClick={()=>setRoute("Weather")}>Weather</Link>
              
           </div>
 

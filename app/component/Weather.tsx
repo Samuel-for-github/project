@@ -38,7 +38,7 @@ export default function Weather() {
         setCountry(country)
         setTemp(temperatureCelcius)
         setSky(conditionText)
-       
+       setError("")
       }
       
     } catch (error) {

@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
-import { ModeToggle } from "@/components/theme-toggle";
 import {
   Menubar,
   MenubarMenu,
@@ -79,7 +78,6 @@ export default function Header() {
           </Menubar>
         </div>
 
-        <ModeToggle />
       </nav>
     </>
   );

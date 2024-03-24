@@ -9,7 +9,8 @@ import {
   
 export default function Tourism() {
   return (
-    <DropdownMenu>
+    <>
+     <DropdownMenu>
     <DropdownMenuTrigger>Open</DropdownMenuTrigger>
     <DropdownMenuContent>
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -20,6 +21,8 @@ export default function Tourism() {
       <DropdownMenuItem>Subscription</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
+    </>
+   
   
   )
 }

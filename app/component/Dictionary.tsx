@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState,Suspense } from "react";
 import { useDebouncedCallback } from "use-debounce";
+
 
 export default function Dictionary() {
   const [input, setInput] = useState("");
@@ -63,6 +64,7 @@ export default function Dictionary() {
             value={"search"}
           />
         </form>
+        
         {word && <h1 className="font-bold my-3 text-4xl">word: {word}</h1>}
         {word && <h2 className="text-3xl">Definitions</h2>}
         {definition && definition.map((value, index)=>(
@@ -80,6 +82,8 @@ export default function Dictionary() {
         }
           
         {error}
+       
+        
       </div>
     </>
   );

@@ -1,6 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState, } from "react";
+import dynamic from "next/dynamic";
+
+
 import { useDebouncedCallback } from "use-debounce";
 export default function Cooking() {
   const [input, setInput] = useState("");
@@ -19,6 +22,7 @@ export default function Cooking() {
 
       const data = await res.json();
         if (data.length>0) {
+          
           setRecipies(data);
           setErrors('')
         }
@@ -53,9 +57,13 @@ export default function Cooking() {
           value={"search"}
         />
       </form>
+      
+
       <div className="mx-3">
+      
         {recipies &&
           recipies.map((dish: any) => (
+            <Suspense fallback={<p>Loading...</p>}>
             <div key={dish.title}>
               <h1 className="font-bold my-3">{dish.title}</h1>
               <p className="text-lg text-red-500 mb-3">
@@ -65,11 +73,15 @@ export default function Cooking() {
               <p className="text-left mb-3">{dish.instructions}</p>
               <div className="block h-1 rounded-md border border-black border-b-2"></div>
             </div>
+            </Suspense>
           ))
         }
         {errors}
-
+       
       </div>
+   
+     
+      
     </div>
   );
 }

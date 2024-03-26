@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import {
   Menubar,
@@ -17,11 +17,38 @@ export default function Header() {
     setToggle(prev=>!prev)
   }
 
+  const popUpRef = useRef<HTMLDivElement | null>(null)
+
+
+  // to close popup
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent)=>{
+
+      if (popUpRef.current && !popUpRef.current.contains(e.target as Node)) {
+        setToggle(false)
+      }
+
+    }
+
+    document.addEventListener("click", handleClickOutside)
+
+    if (!toggle) {
+      document.removeEventListener("click", handleClickOutside)
+    }
+
+    return ()=>{
+      document.removeEventListener("click", handleClickOutside)
+    }
+
+  }, [toggle])
+
+
   return (
     <>
       <nav className="flex w-full justify-between gap-2 my-4 px-6">
-        <div className="md:hidden" >
-          <div onClick={handleMenu} className="w-[28px] h-[28px] object-contain">
+        <div className="md:hidden animate-out" >
+          <div onClick={handleMenu} ref={popUpRef} className="w-[28px] h-[28px] object-contain">
           {toggle? <HiX/> : <HiMenu/>}
           </div>
 

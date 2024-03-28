@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
+import Loading from "./Loading";
 import { useDebouncedCallback } from "use-debounce";
 export default function History() {
   const [input, setInput] = useState("");
   const [errors, setErrors] = useState('')
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false)
   const fetchData = useDebouncedCallback(async () => {
     try {
+      setLoading(true)
       const res = await fetch(
         `https://api.api-ninjas.com/v1/historicalevents?text=${input}`,
         {
@@ -27,6 +30,8 @@ export default function History() {
       }
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   }, 1);
 
@@ -50,8 +55,10 @@ export default function History() {
           value={"search"}
         />
       </form>
+
       <div className="mx-5">
-        {events && events.map((event: any) => (
+      {loading && <div className="text-center"><Loading /></div>} 
+        {!loading && events && events.map((event: any) => (
             <div key={event.event}>
               <h1 className="font-bold my-3">{event.event}</h1>
               <p>{event.day}-{event.month}-{event.year}</p>
@@ -60,7 +67,7 @@ export default function History() {
             </div>
           ))
         }
-        {errors}
+        {!loading && errors}
       </div>
     </div>
   );

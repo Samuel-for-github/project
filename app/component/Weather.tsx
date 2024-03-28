@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
+import Loading from './Loading';
 
 import {
   Card,
@@ -19,10 +20,12 @@ export default function Weather() {
   const [error, setError] = useState("");
   const [place, setPlace] = useState("")
   const [temp, setTemp] = useState("");
+  const [loading, setLoading] = useState(false)
   const [sky, setSky] = useState("");
   const [country, setCountry] = useState("")
   const fetchData = useDebouncedCallback(async () => {
     try {
+      setLoading(true)
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_WEATHER_API_URL}?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${input}&aqi=yes`,);
       const data = await res.json();
@@ -50,6 +53,9 @@ export default function Weather() {
       console.log(error);
     
     }
+    finally{
+      setLoading(false)
+    }
   }, 1);
 
   return (
@@ -74,8 +80,9 @@ export default function Weather() {
             value={"search"}
           />
         </form>
-        {error}
-{place?         <Card>
+        {loading && <Loading />}
+        {!loading && error}
+{!loading && place?         <Card>
   <CardHeader>
     <CardTitle>{place? `Region: ${place}, ${country}`:""}</CardTitle>
   </CardHeader>

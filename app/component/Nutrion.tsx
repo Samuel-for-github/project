@@ -2,12 +2,15 @@
 
 import React, { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import Loading from "./Loading";
 export default function History() {
   const [input, setInput] = useState("");
   const [errors, setErrors] = useState("");
+  const [loading, setLoading] = useState(false)
   const [nutrition, setNutrition] = useState([]);
   const fetchData = useDebouncedCallback(async () => {
     try {
+      setLoading(true)
       const res = await fetch(
         `https://api.api-ninjas.com/v1/nutrition?query=${input}`,
         {
@@ -26,6 +29,9 @@ export default function History() {
       }
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      setLoading(false)
     }
   }, 1);
 
@@ -50,7 +56,8 @@ export default function History() {
         />
       </form>
       <div>
-        {nutrition &&
+        {loading && <Loading/>}
+        {!loading && nutrition &&
           nutrition.map((value: any) => (
             <div key={value.name}>
               <h1 className="font-bold my-3">name: {value.name}</h1>
@@ -69,7 +76,7 @@ export default function History() {
               <div className="block h-1 rounded-md border border-black border-b-2"></div>
             </div>
           ))}
-        {errors}
+        {!loading && errors}
       </div>
     </div>
   );

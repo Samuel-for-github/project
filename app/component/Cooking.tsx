@@ -1,16 +1,18 @@
 "use client";
 
-import React, { Suspense, useState, } from "react";
-import dynamic from "next/dynamic";
+import React, {useState} from "react";
 
+import Loading from "./Loading";
 
 import { useDebouncedCallback } from "use-debounce";
 export default function Cooking() {
   const [input, setInput] = useState("");
   const [errors, setErrors] = useState('')
   const [recipies, setRecipies] = useState([]);
+  const [loading, setLoading] = useState(false)
   const fetchData = useDebouncedCallback(async () => {
     try {
+      setLoading(true)
       const res = await fetch(
         `https://api.api-ninjas.com/v1/recipe?query=${input}`,
         {
@@ -33,6 +35,8 @@ export default function Cooking() {
         }
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   }, 1);
 
@@ -58,13 +62,13 @@ export default function Cooking() {
         />
       </form>
       
-
       <div className="mx-3">
+      {loading && <div className="text-center"><Loading /></div>} 
       
-        {recipies &&
+        {!loading && recipies &&
           recipies.map((dish: any) => (
-            <Suspense key={dish.title} fallback={<p>Loading...</p>}>
-            <div>
+            
+            <div key={dish.title}>
               <h1 className="font-bold my-3">{dish.title}</h1>
               <p className="text-lg text-red-500 mb-3">
                 Ingredients: {dish.ingredients}
@@ -73,10 +77,10 @@ export default function Cooking() {
               <p className="text-left mb-3">{dish.instructions}</p>
               <div className="block h-1 rounded-md border border-black border-b-2"></div>
             </div>
-            </Suspense>
+            
           ))
         }
-        {errors}
+        {!loading && errors}
        
       </div>
    

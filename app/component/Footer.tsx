@@ -23,7 +23,7 @@ export default function Footer() {
       {/* Add more social links/icons as needed */}
     </div>
     {/* Information about who made the website */}
-    <p className="text-xl">Made with ❤️ by <span className='font-bold'>Samuel Fernandes</span></p>
+    <p className="text-xl">Made by <span className='font-bold'>Samuel Fernandes</span></p>
   </div>
   
   )

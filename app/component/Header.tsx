@@ -49,7 +49,7 @@ export default function Header() {
       <nav className="flex w-full justify-between gap-2 my-4 px-6">
         <div className="md:hidden animate-out" >
           <div onClick={handleMenu} ref={popUpRef} className="w-[28px] h-[28px] object-contain">
-          {toggle? <HiX/> : <HiMenu/>}
+          {toggle? <HiX size={30}/> : <HiMenu size={30}/>}
           </div>
 
           <div className={`${toggle? 'flex':'hidden'} py-6 absolute top-9 left-8 rounded-xl bg-white`}>

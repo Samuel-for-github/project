@@ -16,7 +16,7 @@ export default function Footer() {
         <Link href={"https://github.com/Samuel-for-github"} target="_blank">
           <FaGithub size={40}/>
         </Link>
-        <Link href={"www.linkedin.com/in/samuel-fernandes-42466b280"} target="_blank">
+        <Link href={"https://www.linkedin.com/in/samuel-fernandes-42466b280/"} target="_blank">
           <FaLinkedin size={40}/>
         </Link>
      

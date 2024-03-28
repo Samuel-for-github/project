@@ -72,7 +72,7 @@ export default function Tourism() {
     <Card className="mx-6">
   <CardHeader>
     {state?
-    <CardTitle onCange={fetchData}>{`Top Toursists places in ${state}`}</CardTitle>:""
+    <h1 onCange={fetchData}>{`Top Toursists places in ${state}`}</h1>:""
 }
 
           <CardContent>

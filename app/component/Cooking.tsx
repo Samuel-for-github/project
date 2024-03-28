@@ -63,8 +63,8 @@ export default function Cooking() {
       
         {recipies &&
           recipies.map((dish: any) => (
-            <Suspense fallback={<p>Loading...</p>}>
-            <div key={dish.title}>
+            <Suspense key={dish.title} fallback={<p>Loading...</p>}>
+            <div>
               <h1 className="font-bold my-3">{dish.title}</h1>
               <p className="text-lg text-red-500 mb-3">
                 Ingredients: {dish.ingredients}

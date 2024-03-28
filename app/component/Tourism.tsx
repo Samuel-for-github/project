@@ -64,7 +64,7 @@ export default function Tourism() {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button className="px-6 py-2 font-semibold text-2xl" onClick={fetchData}>Click to Get</Button>
+      <Button className="px-6 py-2 font-semibold text-2xl">Click to Get</Button>
     </div>
 
     <div className="my-5 list-none">
@@ -72,7 +72,7 @@ export default function Tourism() {
     <Card className="mx-6">
   <CardHeader>
     {state?
-    <CardTitle>{`Top Toursists places in ${state}`}</CardTitle>:""
+    <CardTitle on change={fetchData}>{`Top Toursists places in ${state}`}</CardTitle>:""
 }
 
           <CardContent>

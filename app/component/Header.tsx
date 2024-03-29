@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import {
   Menubar,
@@ -8,11 +8,15 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
+import { UserWrapper, useUserContext } from "../context/UserContextProvider";
+
+
+
 export default function Header() {
 
   const [route, setRoute] = useState("Home")
   const [toggle, setToggle] = useState(false)
-  
+  const {user, setUser} = useUserContext();
   const handleMenu = ()=>{
     setToggle(prev=>!prev)
   }
@@ -54,13 +58,13 @@ export default function Header() {
 
           <div className={`${toggle? 'flex':'hidden'} py-6 absolute top-9 left-8 rounded-xl bg-white z-10`}>
           <div className="flex flex-col items-start w-full px-6 text-black">
-                <Link href={"/"} onClick={()=>setRoute("Home")} >Home</Link>
-                <Link href={"/CookingPage"} onClick={()=>setRoute("Cooking")}>Cooking</Link>
-                <Link href={"DictionaryPage"}onClick={()=>setRoute("Dictionary")}>Dictionary</Link>
-                <Link href={"NutritionPage"} onClick={()=>setRoute("Nutrition")}>Nutrition</Link>
-                <Link href={"HistoryPage"} onClick={()=>setRoute("History")}>History</Link>
-                <Link href={"TourismPage"} onClick={()=>setRoute("Tourism")}>Tourism</Link>
-                <Link href={"WeatherPage"} onClick={()=>setRoute("Weather")}>Weather</Link>
+                <Link href={"/"} onClick={()=>setUser("Home")} >Home</Link>
+                <Link href={"/CookingPage"} onClick={()=>setUser("Cooking")}>Cooking</Link>
+                <Link href={"DictionaryPage"}onClick={()=>setUser("Dictionary")}>Dictionary</Link>
+                <Link href={"NutritionPage"} onClick={()=>setUser("Nutrition")}>Nutrition</Link>
+                <Link href={"HistoryPage"} onClick={()=>setUser("History")}>History</Link>
+                <Link href={"TourismPage"} onClick={()=>setUser("Tourism")}>Tourism</Link>
+                <Link href={"WeatherPage"} onClick={()=>setUser("Weather")}>Weather</Link>
              
           </div>
 
@@ -70,42 +74,45 @@ export default function Header() {
 
 
         </div>
-        <h1 className="md:hidden font-bold text-2xl">{route}</h1>
+      
+        <h1 className="font-bold text-2xl">{user}</h1>
+      
+        
         <div className="flex gap-2 max-md:hidden">
           <Menubar>
             <MenubarMenu>
               <MenubarTrigger>
-                <Link href={"/"} onClick={()=>setRoute("Home")} >Home</Link>
+                <Link href={"/"} onClick={()=>setUser("Home")} >Home</Link>
               </MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>
-                <Link href={"/CookingPage"} onClick={()=>setRoute("Cooking")}>Cooking</Link>
+                <Link href={"/CookingPage"} onClick={()=>setUser("Cooking")}>Cooking</Link>
               </MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>
-                <Link href={"DictionaryPage"}onClick={()=>setRoute("Dictionary")}>Dictionary</Link>
+                <Link href={"DictionaryPage"}onClick={()=>setUser("Dictionary")}>Dictionary</Link>
               </MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>
-                <Link href={"NutritionPage"} onClick={()=>setRoute("Nutrition")}>Nutrition</Link>
+                <Link href={"NutritionPage"} onClick={()=>setUser("Nutrition")}>Nutrition</Link>
               </MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>
-                <Link href={"HistoryPage"} onClick={()=>setRoute("History")}>History</Link>
+                <Link href={"HistoryPage"} onClick={()=>setUser("History")}>History</Link>
               </MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>
-                <Link href={"TourismPage"} onClick={()=>setRoute("Tourism")}>Tourism</Link>
+                <Link href={"TourismPage"} onClick={()=>setUser("Tourism")}>Tourism</Link>
               </MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>
-              <Link href={"WeatherPage"} onClick={()=>setRoute("Weather")}>Weather</Link>
+              <Link href={"WeatherPage"} onClick={()=>setUser("Weather")}>Weather</Link>
               </MenubarTrigger>
             </MenubarMenu>
           </Menubar>

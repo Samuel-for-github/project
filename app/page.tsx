@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import {useContext} from 'react'
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
@@ -15,8 +17,10 @@ import img6 from "@/public/images/weather.jpeg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useUserContext } from "./context/UserContextProvider";
 
 export default function Home() {
+ const {setUser} = useUserContext();
   return (
     <>
       <div className="container">
@@ -29,42 +33,42 @@ export default function Home() {
           <SwiperSlide>
             <div className="text-center">
               <Link href={"/CookingPage"}>
-                <Image src={img1} width={220} alt="mo" />
+                <Image onClick={()=> setUser("Cooking")}  src={img1} width={220} alt="mo" />
               </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center">
               <Link href={"/DictionaryPage"}>
-                <Image src={img2} width={220} alt="mo" />
+                <Image onClick={()=> setUser("Dictionary")}  src={img2} width={220} alt="mo" />
               </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center">
               <Link href={"/NutritionPage"}>
-                <Image src={img3} width={220} alt="mo" />
+                <Image onClick={()=> setUser("Nutrition")}  src={img3} width={220} alt="mo" />
               </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center">
               <Link href={"/TourismPage"}>
-                <Image src={img4} width={220} alt="mo" />
+                <Image src={img4} onClick={()=> setUser("Tourism")}  width={220} alt="mo" />
               </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center">
               <Link href={"/HistoryPage"}>
-                <Image src={img5} width={220} alt="mo" />
+                <Image onClick={()=> setUser("History")}  src={img5} width={220} alt="mo" />
               </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text-center">
               <Link href={"/WeatherPage"}>
-                <Image src={img6} width={220} alt="mo" />
+                <Image onClick={()=> setUser("Weather")}  src={img6} width={220} alt="mo" />
               </Link>
             </div>
           </SwiperSlide>

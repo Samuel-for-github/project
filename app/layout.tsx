@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 import { ThemeProvider } from "@/components/theme-provider"
 import Footer from "./component/Footer";
+import { UserWrapper } from "./context/UserContextProvider";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <UserWrapper>
       <body className={`${inter.className} flex flex-col items-center min-h-[100vh] mx-auto`}>
           <Header/>
           <div className="flex justify-center mx-auto mb-10">
@@ -32,6 +34,8 @@ export default function RootLayout({
         </div>
         <Footer/>
         </body>
+      </UserWrapper>
+     
     </html>
   );
 }

@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} flex flex-col items-center min-h-[100vh] mx-auto`}>
           <Header/>
-        <div className="flex justify-center mx-auto mb-10">
+          <div className="flex justify-center mx-auto mb-10">
           <ThemeProvider
            attribute="class"
            defaultTheme="system"

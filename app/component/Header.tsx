@@ -52,7 +52,7 @@ export default function Header() {
           {toggle? <HiX size={30}/> : <HiMenu size={30}/>}
           </div>
 
-          <div className={`${toggle? 'flex':'hidden'} py-6 absolute top-9 left-8 rounded-xl bg-white`}>
+          <div className={`${toggle? 'flex':'hidden'} py-6 absolute top-9 left-8 rounded-xl bg-white z-10`}>
           <div className="flex flex-col items-start w-full px-6 text-black">
                 <Link href={"/"} onClick={()=>setRoute("Home")} >Home</Link>
                 <Link href={"/CookingPage"} onClick={()=>setRoute("Cooking")}>Cooking</Link>

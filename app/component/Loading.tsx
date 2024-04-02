@@ -3,11 +3,19 @@ import React from 'react'
 export default function Loading() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="40" stroke="#007bff" stroke-width="6" fill="none">
-      <animate attributeName="r" values="0;40;0" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="stroke-opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
-    </circle>
-  </svg>
+  <circle cx="50" cy="50" r="40" stroke="#007bff" stroke-width="6" fill="none">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 50 50"
+      to="360 50 50"
+      dur="2s"
+      repeatCount="indefinite"
+    />
+  </circle>
+</svg>
+
   
 
 

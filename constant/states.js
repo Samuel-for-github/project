@@ -1,2 +1,2 @@
 
-export const states = ["Goa","Maharstra", "Karnataka"]
+export const states = ["Goa","Maharstra", "karnataka"]

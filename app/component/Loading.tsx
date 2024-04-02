@@ -3,11 +3,12 @@ import React from 'react'
 export default function Loading() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="40" stroke="#007bff" stroke-width="6" fill="none">
-    <animate attributeName="stroke-dasharray" values="1, 200; 89, 200; 89, 200" dur="2s" repeatCount="indefinite"/>
-    <animate attributeName="stroke-dashoffset" values="0; -35; -124" dur="1.25s" repeatCount="indefinite"/>
-  </circle>
-</svg>
+    <circle cx="50" cy="50" r="40" stroke="#007bff" stroke-width="6" fill="none">
+      <animate attributeName="r" values="0;40;0" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+  
 
 
     //<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><radialGradient id="a10" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#0F29FF"></stop><stop offset=".3" stop-color="#0F29FF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#0F29FF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#0F29FF" stop-opacity=".3"></stop><stop offset="1" stop-color="#0F29FF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a10)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#0F29FF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>

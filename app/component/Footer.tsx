@@ -5,7 +5,7 @@ import { FaGithub } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <div className="mt-auto py-7 bg-black w-full text-white text-center">
+    <div className="mt-auto py-5 bg-black w-full text-white text-center">
     <div className="flex justify-center space-x-6 mb-8">
       {/* Social Links */}
        

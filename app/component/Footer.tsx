@@ -3,6 +3,7 @@ import React from 'react'
 import {FaInstagram, FaLinkedin} from "react-icons/fa"
 import { FaGithub } from 'react-icons/fa'
 
+
 export default function Footer() {
   return (
     <div className="mt-auto py-5 bg-black w-full text-white text-center">
@@ -23,7 +24,7 @@ export default function Footer() {
       {/* Add more social links/icons as needed */}
     </div>
     {/* Information about who made the website */}
-    <p className="text-xl">Made by <span className='font-bold'>Samuel Fernandes</span></p>
+    <p>About us</p>
   </div>
   
   )

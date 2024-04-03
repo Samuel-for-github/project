@@ -80,7 +80,11 @@ export default function Weather() {
             value={"search"}
           />
         </form>
-        {loading && <Loading />}
+        {loading && 
+        <div className="flex justify-center">
+          <Loading />
+        </div>
+        }
         {!loading && error}
 {!loading && place?         <Card>
   <CardHeader>

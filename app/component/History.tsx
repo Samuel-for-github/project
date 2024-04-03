@@ -57,7 +57,7 @@ export default function History() {
       </form>
 
       <div className="mx-5">
-      {loading && <div className="text-center"><Loading /></div>} 
+      {loading && <div className="flex justify-center" ><Loading /></div>} 
         {!loading && events && events.map((event: any) => (
             <div key={event.event}>
               <h1 className="font-bold my-3">{event.event}</h1>

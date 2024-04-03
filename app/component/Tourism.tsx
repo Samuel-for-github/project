@@ -54,7 +54,11 @@ export default function Tourism() {
             <DropdownMenuContent>
               <DropdownMenuLabel>States</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {loading && <Loading/>}
+              {loading && 
+              <div className="flex justify-center">
+                <Loading/>
+              </div>
+                }
               {!loading && states.map((val, index) => (
                 <DropdownMenuItem
                   onClick={() => {

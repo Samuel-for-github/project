@@ -63,7 +63,7 @@ export default function Cooking() {
       </form>
       
       <div className="mx-3">
-      {loading && <div className="text-center"><Loading /></div>} 
+      {loading && <div className="flex justify-center"><Loading /></div>} 
       
         {!loading && recipies &&
           recipies.map((dish: any) => (

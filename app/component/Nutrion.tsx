@@ -56,7 +56,11 @@ export default function History() {
         />
       </form>
       <div>
-        {loading && <Loading/>}
+        {loading && 
+        <div className="flex justify-center">
+          <Loading/>
+        </div>
+        }
         {!loading && nutrition &&
           nutrition.map((value: any) => (
             <div key={value.name}>

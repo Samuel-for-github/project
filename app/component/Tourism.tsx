@@ -39,7 +39,7 @@ export default function Tourism() {
       setPlaces(place[0]["places"])
       setImgSrc(place[1]['img'])
     } catch (error) {
-      console.log(error);
+     
     }
     finally{
       setLoading(false)

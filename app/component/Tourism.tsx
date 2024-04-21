@@ -32,8 +32,10 @@ export default function Tourism() {
   const [loading, setLoading] = useState(false)
   const fetchData = async (selectedState: string) => {
     try {
+      const stateName = decodeURI(selectedState);
+      
       setLoading(true)
-      const res = await fetch(`api/tourism/states/${selectedState}`);
+      const res = await fetch(`api/tourism/states/${stateName}`);
       const data = await res.json();
       const place = data
       setPlaces(place[0]["places"])
